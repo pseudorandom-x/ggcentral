@@ -1,10 +1,10 @@
-## ggcentral - a Discord bot for all things video games!
+# ggcentral - a Discord bot for all things video games!
 
 ### ggcentral, or ggc-bot is a Discord bot written in JavaScript's Node runtime, and powered by the Discord.js library (check it out [here](https://github.com/discordjs/discord.js)).
 
 So what does it do exactly? Glad you asked. I've purposefully made it to be extensible and customizable, adding only the features that I thought were missing from the usual bots, or features that were exciting enough that made go 'why not?'. And the features themselves? Well, have a look at them for yourself.
 
-* Get all the deals currently from across the web on any game. Since names can vary wildly, the bot can currently only accept Steam's appIDs. These IDs are displayed in the Steam's store links:
+* Get all the deals currently from across the web on any game. Since names can vary wildly, the bot can currently only accepts Steam's appIDs. These IDs are displayed in the Steam's store links:
 
 ![Screenshot_567](https://user-images.githubusercontent.com/99959625/185499743-87c03dd1-216a-44b1-a025-a918f29e725c.png)
   * Usage: `gg!check [steamAppID]`
