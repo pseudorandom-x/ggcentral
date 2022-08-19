@@ -5,12 +5,10 @@ const { EmbedBuilder } = require('discord.js');
 const BotUtils = require('../../utils/util');
 
 const deals = function(cmdArr, message) {
-	let x = 'Steam';
 	let shops = 'steam';
 
 	if (cmdArr[1] !== undefined) {
 		if (cmdArr[1] === '-a') {
-			x = 'the web';
 			shops = ['steam', 'gog', 'greenmangaming', 'humblestore', 'amazonus', 'microsoft', 'gamesplanet', 'epic', 'origin'].join('%2C');
 		}
 		else {
@@ -26,7 +24,7 @@ const deals = function(cmdArr, message) {
 			const items = res.data.list;
 
 			for (const item of items) {
-				titles.push(`[${ item.title }](${ item.urls.buy })`);
+				titles.push(`[${ item.title } 🔗](${ item.urls.buy })`);
 				cuts.push(item.price_cut);
 			}
 
@@ -36,7 +34,7 @@ const deals = function(cmdArr, message) {
 				embeds: [
 					new EmbedBuilder()
 						.setColor(0xFF10F0)
-						.setTitle('__Top 5 deals currently__')
+						.setTitle('__Top deals currently 💰__')
 						.addFields(
 							{ name: 'Title (click to open store link)', value: titles.join('\n'), inline: true },
 							{ name: 'Cuts', value: cuts.join('\n'), inline: true },
