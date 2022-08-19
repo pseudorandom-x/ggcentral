@@ -1,8 +1,8 @@
 <h1 align="center">
-ggcentral - a Discord bot for all things video games!
+ggcentral - a Discord bot for all things video games 🎮
 </h1>
 
-### ggcentral, or ggc-bot is a Discord bot written in JavaScript's Node runtime, and powered by the Discord.js library (check it out [here](https://github.com/discordjs/discord.js)).
+### ggcentral, or ggc-bot is a Discord bot written in JavaScript's Node runtime, and powered by the Discord.js library (check it out [here](https://github.com/discordjs/discord.js) and [here](https://discordjs.guide/)).
 
 So what does it do exactly? Glad you asked. I've purposefully made it to be extensible and customizable, adding only the features that I thought were missing from the usual bots, or features that were exciting enough that made go 'why not?'. And the features themselves? Well, have a look at them for yourself.
 
