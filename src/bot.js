@@ -26,22 +26,22 @@ const bot = new Client({
 const BotUtils = require('./utils/util');
 
 for (const eventFile of fs.readdirSync('./handlers/events/')) {
-	if (eventFile.endsWith('.js')) {
-		const event = eventFile.split('.')[0];
+  if (eventFile.endsWith('.js')) {
+    const event = eventFile.split('.')[0];
 
-		// register event and the respective callback
-		bot.on(event, require(`./handlers/events/${ event }`));
-	}
+    // register event and the respective callback
+    bot.on(event, require(`./handlers/events/${ event }`));
+  }
 }
 
 bot.once('ready', () => {
-	BotUtils.SysLog('Bot up and running!\n');
+  BotUtils.SysLog('Bot up and running!\n');
 });
 
 bot.login(process.env.BOT_TOKEN)
-	.then(() => {
-		BotUtils.SysLog('** Token verified. Logging in... **')
-	})
-	.catch((err) => {
-		BotUtils.ErrLog(err.message);
-	});
+  .then(() => {
+    BotUtils.SysLog('** Token verified. Logging in... **')
+  })
+  .catch((err) => {
+    BotUtils.ErrLog(err.message);
+  });
