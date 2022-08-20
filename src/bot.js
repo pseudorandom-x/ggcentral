@@ -19,7 +19,7 @@ const bot = new Client({
 		GatewayIntentBits.DirectMessageReactions,
 	],
 	partials: [
-		'CHANNEL' // Required to receive DMs
+		'CHANNEL' // Required to receive DM
 	]
 });
 
