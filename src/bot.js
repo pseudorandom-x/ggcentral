@@ -7,20 +7,20 @@ const fs = require('fs');
 const { Client, IntentsBitField, GatewayIntentBits } = require('discord.js');
 
 const bot = new Client({
-	intents: [
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMembers,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.MessageContent,
-		GatewayIntentBits.GuildPresences,
-		GatewayIntentBits.DirectMessages,
-		IntentsBitField.Flags.DirectMessages,
-		GatewayIntentBits.DirectMessageReactions,
-		GatewayIntentBits.DirectMessageReactions,
-	],
-	partials: [
-		'CHANNEL' // Required to receive DMs
-	]
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.DirectMessages,
+    IntentsBitField.Flags.DirectMessages,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.DirectMessageReactions,
+  ],
+  partials: [
+    'CHANNEL' // doesn't work still
+  ]
 });
 
 const BotUtils = require('./utils/util');
