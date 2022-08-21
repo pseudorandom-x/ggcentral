@@ -4,16 +4,23 @@ const { ETwitterStreamEvent, ETwitterApiError, TwitterApi } = require('twitter-a
 
 const client = new TwitterApi(process.env.TWITTER_BEARER_TOKEN);
 
-async function tweeter()
+// return a TweetStream not wrapped in Promise
+const stream = client.v2.searchStream({ autoConnect: false });
+
+async function twitterHandler()
 {
-  const stream = await client.v2.searchStream();
-
-  const rules = await client.v2.streamRules();
-  console.log(rules);
-
+  // attach handlers
   stream.on(
     ETwitterStreamEvent.Error,
     err => console.log(err)
+  );
+
+  stream.on(
+    ETwitterStreamEvent.ConnectionClosed,
+    err => {
+      console.log(`Stream connection closed unexpectedly.`);
+      console.log(err);
+    }
   );
 
   stream.on(
@@ -35,7 +42,17 @@ async function tweeter()
       console.log(`@Steam sent something!`);
       console.log(data);
     }
-  )
+  );
+
+  // connect Stream
+  await stream.connect({
+    autoReconnect: true,
+    autoReconnectRetries: Infinity,
+  });
+
+  const rules = await client.v2.streamRules();
+  console.log(`Connected stream to filtered stream with the following rules:`);
+  console.log(rules);
 }
 
-module.exports = tweeter;
+module.exports = twitterHandler;

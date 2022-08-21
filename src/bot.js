@@ -6,8 +6,6 @@ const fs = require('fs');
 
 const { Client, IntentsBitField, GatewayIntentBits } = require('discord.js');
 
-const tweeter = require('./handlers/tweets');
-
 const bot = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -25,6 +23,8 @@ const bot = new Client({
   ]
 });
 
+const twitterHandler = require('./handlers/tweets');
+
 const BotUtils = require('./utils/util');
 
 for (const eventFile of fs.readdirSync('./handlers/events/')) {
@@ -40,7 +40,7 @@ bot.once('ready', () => {
   BotUtils.SysLog('Bot up and running!\n');
 });
 
-tweeter();
+twitterHandler();
 
 bot.login(process.env.BOT_TOKEN)
   .then(() => {

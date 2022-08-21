@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 
 const BotUtils = require('../../utils/util');
 
-const check = async function(cmdArr, message) {
+const check = async function (cmdArr, message) {
   if (cmdArr[1] === undefined) {
     message.reply(`'check' command requires an additional parameter - a Steam appid (refer to my manual to find it).`);
     return;
