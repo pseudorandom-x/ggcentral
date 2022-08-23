@@ -35,14 +35,19 @@ for (const eventFile of fs.readdirSync('./handlers/events/')) {
 
     // register event and the respective callback
     bot.on(event, require(`./handlers/events/${ event }`));
+    // bot.on('messageCreate', message => {
+    // })
   }
 }
 
-bot.once('ready', () => {
+bot.once('ready', async () => {
+  await twitterHandler();
+  await redditHandler();
+
+  // connect to db here
+
   BotUtils.SysLog('Bot up and running!\n');
 });
-
-twitterHandler();
 
 bot.login(process.env.BOT_TOKEN)
   .then(() => {

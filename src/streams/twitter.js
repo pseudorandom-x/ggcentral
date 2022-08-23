@@ -4,6 +4,8 @@ const { ETwitterStreamEvent, ETwitterApiError, TwitterApi } = require('twitter-a
 
 const client = new TwitterApi(process.env.TWITTER_BEARER_TOKEN);
 
+const BotUtils = require('../utils/util');
+
 // return a TweetStream not wrapped in Promise
 const stream = client.v2.searchStream({ autoConnect: false });
 
@@ -12,35 +14,36 @@ async function twitterHandler()
   // attach handlers
   stream.on(
     ETwitterStreamEvent.Error,
-    err => console.log(err)
+    err => BotUtils.ErrLog(err, 'twitter')
   );
 
   stream.on(
     ETwitterStreamEvent.ConnectionClosed,
     err => {
-      console.log(`Stream connection closed unexpectedly.`);
-      console.log(err);
+      BotUtils.SysLog('Stream connection closed unexpectedly.', 'twitter');
+      BotUtils.ErrLog(err, 'twitter');
     }
   );
 
   stream.on(
     ETwitterStreamEvent.ConnectionError,
     err => {
-      console.log(`Connection error:`);
-      console.log(err);
+      BotUtils.SysLog('Connection error occured.', 'twitter');
+      BotUtils.ErrLog(err, 'twitter');
     }
   );
 
   stream.on(
     ETwitterStreamEvent.Connected,
-    () => console.log('Connection established. Listening for events...')
+    () => BotUtils.SysLog('Connection established to Stream. Waiting for new tweets...', 'twitter')
   );
 
   stream.on(
     ETwitterStreamEvent.Data,
     data => {
-      console.log(`@Steam sent something!`);
-      console.log(data);
+      BotUtils.SysLog('Steam posted a new tweet.', 'twitter');
+      console.log(data.data.text);
+      console.log('\n');
     }
   );
 
@@ -51,8 +54,9 @@ async function twitterHandler()
   });
 
   const rules = await client.v2.streamRules();
-  console.log(`Connected stream to filtered stream with the following rules:`);
+  BotUtils.SysLog('Connected stream to filtered stream with the following rules:', 'twitter');
   console.log(rules);
+  console.log('------------------');
 }
 
 module.exports = twitterHandler;

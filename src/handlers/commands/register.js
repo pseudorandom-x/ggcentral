@@ -13,17 +13,18 @@ const register = async function(cmdArr, message) {
     .then(res => res.json())
     .then(res => {
         if (res.response.success === 1)
-        uname = res.response.steamid;
+          uname = res.response.steamid;
 
         return fetch(`https://store.steampowered.com/wishlist/profiles/${ uname }/wishlistdata/`);
       })
     .then(res => res.json())
     .then(res => {
       if (res.success === 2)
-      throw new Error('Error registering user.');
+        throw new Error('Error registering user.');
 
       // Wishlist ok
       message.reply(`Roger, ${ message.author.username }. Registering your wishlist in my mind 🧠...`);
+
       return res;
     })
     .catch((err) => {
@@ -45,17 +46,17 @@ const register = async function(cmdArr, message) {
             .setTimestamp()
         ]
       });
+
       return undefined;
     });
 
-  // console.log(res);
   BotUtils.SysLog('Wishlist URL accessible. Parsing...');
 
   let i = 0;
   let dct = null;
   const titles = [];
   const cuts = [];
-  let firstApp = '';
+  // let firstApp = '';
   let headerImg = 'https://i.imgur.com/erAAai2.jpg';
 
   for (const [appid, value] of Object.entries(res)) {
@@ -69,7 +70,8 @@ const register = async function(cmdArr, message) {
     if (i === 1)
       headerImg = value.capsule;
   }
-  let footer = i > MAX_GAMES ? 'Wishlist registered. Showing first 8 titles.' : `Registered all ${ i } titles.`;
+  let footer = i > MAX_GAMES ? 'Wishlist registered. Showing first 8 titles.'
+    : `Registered all ${ i } titles.`;
 
   BotUtils.SysLog('Wishlist registered. Formatting embed...');
 
