@@ -1,6 +1,0 @@
-db.apps.insertOne(
-  {
-    appid: 440,
-    userids: [ '103', '341', '452', '425' ],
-  }
-)

@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env'});
+require('dotenv').config({ path: '../.env' });
 
 const sw = require('snoowrap');
 
@@ -23,11 +23,16 @@ async function redditHandler()
 {
   while (true) {
     try {
-      submissionStream.on('item', submission => {
-        console.log('New user submission on r/GameDeals:');
-        console.log(submission);
-        console.log('----------------------\n');
-      });
+      submissionStream.on(
+        'item',
+        submission => {
+          // search db and send to channels (upto 3 for one server)
+
+          console.log('New user submission on r/GameDeals:');
+          console.log(submission);
+          console.log('----------------------\n');
+        }
+      );
     }
     catch(err) {
       console.log(err);

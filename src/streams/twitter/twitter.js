@@ -4,7 +4,7 @@ const { ETwitterStreamEvent, ETwitterApiError, TwitterApi } = require('twitter-a
 
 const client = new TwitterApi(process.env.TWITTER_BEARER_TOKEN);
 
-const BotUtils = require('../utils/util');
+const BotUtils = require('../../utils/util');
 
 // return a TweetStream not wrapped in Promise
 const stream = client.v2.searchStream({ autoConnect: false });

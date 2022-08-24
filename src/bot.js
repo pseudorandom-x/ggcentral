@@ -23,9 +23,9 @@ const bot = new Client({
   ]
 });
 
-const twitterHandler = require('./streams/twitter');
+const twitterHandler = require('./streams/twitter/twitter');
 
-const redditHandler = require('./streams/reddit');
+const redditHandler = require('./streams/reddit/reddit');
 
 const BotUtils = require('./utils/util');
 
