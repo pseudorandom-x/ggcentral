@@ -14,7 +14,9 @@ So what does it do exactly? Glad you asked. I've purposefully made it to be exte
 ![Screenshot_565](https://user-images.githubusercontent.com/99959625/185499114-f6918e43-4799-4d57-a571-9a3309bc087f.png)
 
 * Check for the most 'bang-for-buck' deals from across stores like Steam, Epic, Origin, GOG, etc. Games by default are listed by their discounts, sorted descending.
-  * Usage: `gg!deals`
+  * Usage: `gg!deals`, OR
+  * `gg!deals -a` to list deals from across all supported stores, OR
+  * `gg!deals epic,gog` to list from stores mentioned (should be given as comma-separated string without spaces).
 
 ![Screenshot_569](https://user-images.githubusercontent.com/99959625/185500558-cd182d0a-9b5a-416a-b369-c37c886bb0a2.png)
 
